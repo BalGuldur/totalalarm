@@ -1,0 +1,11 @@
+<h1>Активная авария</h1>
+<%= form_for @alarm, :method => :get, :action => :index do |f| %>
+	<%= f.label "Описание" %><br />
+	<%= f.text_field :descr %><br />
+	<%= text_field_tag :test %><br />
+	<% if @alarm.enable==true %>
+		<%= f.submit "Выключить" %>
+	<% else %>
+		<%= f.submit "Включить" %>
+	<% end -%><br />
+<% end -%>
