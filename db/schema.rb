@@ -11,6 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20031016045715) do
+
+  create_table "alarms", :force => true do |t|
+    t.string   "descr"
+    t.string   "creator"
+    t.string   "disabler"
+    t.boolean  "enable"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "answers", :force => true do |t|
+    t.string   "descr"
+    t.boolean  "enable"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "granswers", :force => true do |t|
+    t.string   "name"
+    t.string   "descr"
+    t.boolean  "enable"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
