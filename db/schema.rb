@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20031016045715) do
+ActiveRecord::Schema.define(:version => 20031016050013) do
 
   create_table "alarms", :force => true do |t|
     t.string   "descr"
@@ -22,11 +22,19 @@ ActiveRecord::Schema.define(:version => 20031016045715) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "alarms_answers", :force => true do |t|
+    t.integer  "alarm_id"
+    t.integer  "answer_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "answers", :force => true do |t|
     t.string   "descr"
     t.boolean  "enable"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "granswer_id"
   end
 
   create_table "granswers", :force => true do |t|
