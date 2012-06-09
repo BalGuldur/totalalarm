@@ -5,6 +5,9 @@
 	<li>
 	<%= link_to('Изменить пароль', change_pass_user_path(current_user.id), :method => :get) %>
 	</li>
+	<% if current_user.admin==true %>
+		<%= link_to('Редактирование пользователей', users_path) %>
+	<% end -%>
 <% else %>
 	<li>
 		<%# link_to('Login', new_user_session_path) %>

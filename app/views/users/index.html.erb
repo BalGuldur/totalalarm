@@ -1,0 +1,29 @@
+<h1>Добавить пользователя</h1>
+<%= form_for @user do |f| %>
+	<%= f.label :username %>
+	<%= f.text_field :username %><br />
+	<%= f.label :email %>
+	<%= f.email_field :email %><br />
+	<%= f.label :password %>
+	<%= f.password_field :password %><br />
+	<%# f.label :password_confirmation %>
+	<%# f.password_field :password_confirmation %><br />
+	<%= f.label :admin %>
+	<%= f.check_box :admin %><br />
+	<%= f.submit "Создать" %>
+<% end -%>
+<h1>пользователи</h1>
+<table>
+	<tr>
+		<th>username</th>
+		<th>e-mail</th>
+		<th>admin</th>
+	</tr>
+	<%= @users.each do |user| %>
+		<tr>
+			<td><%= user.username %></td>
+			<td><%= user.email %></td>
+			<td><%= user.admin %></td>
+		</tr>
+	<% end %>
+</table>
