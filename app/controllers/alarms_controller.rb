@@ -1,5 +1,7 @@
 # encoding: utf-8
 class AlarmsController < ApplicationController
+	before_filter :authenticate_user!
+
   def index
 		@alarm=Alarm.find_by_enable(true)
 		if @alarm==nil

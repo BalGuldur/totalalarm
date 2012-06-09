@@ -1,4 +1,6 @@
 Totalalarm::Application.routes.draw do
+  devise_for :users
+
 	resources :alarms do
 		member do 
 			post 'doingfromalarm'
