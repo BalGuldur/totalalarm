@@ -19,7 +19,7 @@
 	<% @gransw.each do |gransw| %>
 		<div class="field">
 			<%= gransw.name %><br />
-			<%= select_tag "answers[]", options_from_collection_for_select(gransw.answers.find_all_by_enable(true), "id", "descr") %><br />
+			<%= select_tag "answers[]", options_from_collection_for_select(gransw.answers.find_all_by_enable(true), "id", "descr", @alarm.answers.find_by_granswer_id(gransw.id).id) %><br />
 		</div>
 	<% end -%>
 	<%# text_field_tag :test %><br />

@@ -9,6 +9,14 @@ class AlarmsController < ApplicationController
   end
 	
 	def update
+		@alarm=Alarm.find(params[:id])
+		@alarm.update_attributes(params[:alarm])
+		@alarm.answers.clear
+		@answers=params[:answers]
+		@answers.each do |answer_id|
+			@alarm.answers<<Answer.find(answer_id)
+		end
+		redirect_to alarms_path
 	end
 
 	def disable
@@ -36,6 +44,4 @@ class AlarmsController < ApplicationController
 		end
 	end
 
-	def update
-	end
 end
