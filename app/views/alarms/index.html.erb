@@ -1,11 +1,37 @@
-<h1>Активная авария</h1>
-<%= form_for @alarm, :method => :get, :action => :index do |f| %>
-	<%= f.label "Описание" %><br />
-	<%= f.text_field :descr %><br />
-	<%= text_field_tag :test %><br />
+<h1>Общие аварии</h1>
+<%= form_for @alarm do |f| %>
+  <% if @alarm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@alarm.errors.count, "error") %> prohibited this domain from being saved:</h2>
+
+      <ul>
+      <% @alarm.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="field">
+		<%= f.label "Описание" %><br />
+		<%= f.text_field :descr %><br />
+	</div>
+	<% @gransw.each do |gransw| %>
+		<div class="field">
+			<%= gransw.name %><br />
+			<%= select_tag "answers[]", options_from_collection_for_select(gransw.answers.find_all_by_enable(true), "id", "descr") %><br />
+		</div>
+	<% end -%>
+	<%# text_field_tag :test %><br />
 	<% if @alarm.enable==true %>
-		<%= f.submit "Выключить" %>
+		<%= f.submit "Обновить" %>
+		<%# button_to "Выключить", :action => :disable %><br />	
+		<%= label_tag "Сейчас общая авария ПРОГОВАРИВАЕТСЯ!!!" %>
 	<% else %>
-		<%= f.submit "Включить" %>
+		<%= f.submit "Включить" %><br />
+		<%= label_tag "Сейчас общая авария НЕ ПРОГОВАРИВАЕТСЯ!!!" %>
 	<% end -%><br />
+<% end -%>
+<% if @alarm.enable==true %>
+<%= button_to "Выключить", :action => :disable %>
 <% end -%>

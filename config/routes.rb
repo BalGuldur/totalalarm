@@ -1,5 +1,12 @@
 Totalalarm::Application.routes.draw do
-	resources :alarms
+	resources :alarms do
+		member do 
+			post 'doingfromalarm'
+		end
+		collection do
+			post 'disable'
+		end
+	end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
