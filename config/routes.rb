@@ -1,5 +1,14 @@
 Totalalarm::Application.routes.draw do
-  devise_for :users
+	devise_for :users, :controllers => {:passwords => "passwords"} do
+	end
+
+	resources :passwords
+
+	resources :users do
+		member do
+			get 'change_pass'
+		end
+	end
 
 	resources :alarms do
 		member do 
